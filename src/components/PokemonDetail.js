@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { favoritePokemon} from '../actions';
 
-class ListPokemon extends React.Component {
+
+class PokemonDetail extends React.Component {
   render() {
-    console.log(this.props);
     if (this.props.pokemon.sprites) {
       const habilidades = this.props.pokemon.abilities.map(element => {
         return <li key={element.ability.url}>{element.ability.name}</li>;
@@ -28,6 +29,12 @@ class ListPokemon extends React.Component {
               <ul>{tipos}</ul>
             </div>
           </div>
+          <button
+            onClick={() => this.props.favoritePokemon(this.props.pokemon.name)}
+            className="ui button primary"
+          >
+            Add
+          </button>
         </div>
       );
     }
@@ -35,6 +42,6 @@ class ListPokemon extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { pokemon: state };
+  return { pokemon: state.pokemon };
 };
-export default connect(mapStateToProps)(ListPokemon);
+export default connect(mapStateToProps,{favoritePokemon})(PokemonDetail);

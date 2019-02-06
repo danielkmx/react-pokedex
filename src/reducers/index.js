@@ -1,8 +1,9 @@
-export default (state = [], action) => {
-  switch (action.type) {
-    case "FETCH_POKEMON":
-      return action.payload;
-    default:
-      return state;
-  }
-};
+import { combineReducers } from 'redux';
+import PokeDetailReducer from './PokeDetailReducer'
+import favoritePokemonsReducer from './favoritePokemonReducer';
+
+
+export default combineReducers({
+    pokemon: PokeDetailReducer,
+    favoritePokemons: favoritePokemonsReducer
+})
