@@ -1,5 +1,5 @@
 import React from "react";
-import PokemonDetail from "../components/PokemonDetail";
+import PokemonDetail from '../../components/PokemonDetail';
 import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
 import configureMockStore from "redux-mock-store";
