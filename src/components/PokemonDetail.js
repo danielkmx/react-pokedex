@@ -5,6 +5,7 @@ import { favoritePokemon} from '../actions';
 
 class PokemonDetail extends React.Component {
   render() {
+    <h1>oi</h1>
     if (this.props.pokemon.sprites) {
       const habilidades = this.props.pokemon.abilities.map(element => {
         return <li key={element.ability.url}>{element.ability.name}</li>;
