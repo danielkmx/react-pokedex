@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { favoritePokemon} from '../actions';
+import { fetchFavoritePokemons, favoritePokemon} from '../actions';
 
 
 class PokemonDetail extends React.Component {
   render() {
-    <h1>oi</h1>
     if (this.props.pokemon.sprites) {
       const habilidades = this.props.pokemon.abilities.map(element => {
         return <li key={element.ability.url}>{element.ability.name}</li>;
@@ -31,7 +30,11 @@ class PokemonDetail extends React.Component {
             </div>
           </div>
           <button
-            onClick={() => this.props.favoritePokemon(this.props.pokemon.name)}
+            onClick={() => {
+                this.props.favoritePokemon(this.props.pokemon.name,
+                  this.props.pokemon.types[0].type.name,
+                  this.props.pokemon.sprites.back_default)
+              }}
             className="ui button primary"
           >
             Add
@@ -45,4 +48,4 @@ class PokemonDetail extends React.Component {
 const mapStateToProps = state => {
   return { pokemon: state.pokemon };
 };
-export default connect(mapStateToProps,{favoritePokemon})(PokemonDetail);
+export default connect(mapStateToProps,{fetchFavoritePokemons, favoritePokemon})(PokemonDetail);

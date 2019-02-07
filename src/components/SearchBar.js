@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { pokemon: state };
+  return { pokemon: state.pokemon };
 };
 
 export default connect(
